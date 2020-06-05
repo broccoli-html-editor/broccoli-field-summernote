@@ -1,10 +1,17 @@
 # broccoli-field-summernote
 
-Broccoliに、 WYSIWYGエディタ "summernote" によるフィールド機能を追加します。
+[Broccoli](https://github.com/broccoli-html-editor/broccoli-html-editor)に、 WYSIWYGエディタ "[summernote](https://summernote.org/)" によるフィールド機能を追加します。
+
+
+## Installation
+
+```
+$ composer require broccoli-html-editor/broccoli-field-summernote;
+```
 
 ## 更新履歴 - Change log
 
-### broccoli-field-summernote v0.1.0 (リリース日未定)
+### broccoli-field-summernote v0.1.0 (2020年6月6日)
 
 - Initial release.
 
