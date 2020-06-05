@@ -1,0 +1,21 @@
+[
+    {
+        "id": "broccoli-field-summernote",
+        "name": "Summernote Editor",
+        "type": "field",
+        "backend": {
+            "class": "broccoliHtmlEditor\\broccoliFieldSummernote\\summernote",
+            "require": "node/summernote.js"
+        },
+        "frontend": {
+            "dir": "fields/summernote/",
+            "file": [
+                "summernote.css",
+                "summernote.js",
+                "summernote/summernote.min.css",
+                "summernote/summernote.min.js"
+            ],
+            "function" : "window.BroccoliFieldSummernote"
+        }
+    }
+]

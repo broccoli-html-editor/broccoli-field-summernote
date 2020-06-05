@@ -1,0 +1,11 @@
+{
+    "name": "Summernote",
+    "interface": {
+        "fields": {
+            "main": {
+                "type": "broccoli-field-summernote",
+                "label": "Summernote"
+            }
+        }
+    }
+}

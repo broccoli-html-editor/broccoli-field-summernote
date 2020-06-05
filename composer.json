@@ -1,0 +1,29 @@
+{
+    "name": "broccoli-html-editor/broccoli-field-summernote",
+    "description": "WYSIWYGエディタ \"summernote\" によるフィールド機能を追加します。",
+    "keywords": ["broccoli","pickles2"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomoya Koyanagi",
+            "email": "tomk79@gmail.com"
+        }
+    ],
+    "repositories": [
+    ],
+	"minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "pickles2/px-fw-2.x": "^2.0",
+        "pickles2/px2-multitheme": "^2.0",
+        "pickles2/px2-px2dthelper": "^2.0",
+        "tomk79/broccoli-module-std-document": "^0.1"
+    },
+    "autoload": {
+        "files": [
+            "php/summernote.php"
+        ]
+    }
+}
