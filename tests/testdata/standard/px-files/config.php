@@ -396,7 +396,7 @@ return call_user_func( function(){
 				'file' => array(
 					'summernote.css',
 					'summernote.js',
-	                "summernote/summernote.min.css",
+					"summernote/summernote.min.css",
 					"summernote/summernote.min.js",
 				),
 				'function' => 'window.BroccoliFieldSummernote'
