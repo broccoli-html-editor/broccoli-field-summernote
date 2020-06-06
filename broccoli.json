@@ -8,7 +8,7 @@
             "require": "node/summernote.js"
         },
         "frontend": {
-            "dir": "fields/summernote/",
+            "dir": "fields/",
             "file": [
                 "summernote.css",
                 "summernote.js",
