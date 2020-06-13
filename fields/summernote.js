@@ -13427,6 +13427,11 @@ window.BroccoliFieldSummernote = function(broccoli){
 			};
 		}
 
+		var rows = 12;
+		if( mod.rows ){
+			rows = mod.rows;
+		}
+
 		if(typeof(data.src) != typeof('')){
 			data.src = '';
 		}
@@ -13463,40 +13468,60 @@ window.BroccoliFieldSummernote = function(broccoli){
 				break;
 		}
 
-		var $rtn = $('<div>');
-		$rtn.append(
-			'<div class="broccoli-field-summernote">'+
-			'</div>'
-		);
 
-		$(elm).html($rtn);
+		var $div = $('<div>');
+		$(elm).html($div);
 
-		if( isGlobalJQuery ){
-			// jQuery がある場合
-			var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote').eq(0);
-			$targetElm.summernote({
-				// TODO: 隠蔽したい。
-				placeholder: '',
-				tabsize: 2,
-				height: 300,
-				toolbar: [
-					['style', ['style']],
-					['font', ['bold', 'underline', 'clear']],
-					['color', ['color']],
-					['para', ['ul', 'ol', 'paragraph']],
-					['table', ['table']],
-					['insert', ['link', 'picture', 'video']],
-					['view', ['fullscreen', 'codeview', 'help']]
-				]
-			});
-			$targetElm.summernote('code', data.src);
-		}else{
-			// jQuery がない場合
-			console.error('broccoli-field-summernoteフィールドで Summernote (WYSIWYG)を利用するには、グローバルスコープに jQuery がロードされている必要があります。');
-			$(elm).find('.broccoli-field-summernote').append( $('<textarea>')
+		if( rows == 1 ){
+			var $formElm = $('<input type="text" class="form-control">')
+				.attr({
+					"name": mod.name
+				})
 				.val(data.src)
+				.css({'width':'100%'})
+			;
+			$div.append( $formElm );
+
+		}else{
+
+			$div.append(
+				'<div class="broccoli-field-summernote">'+
+				'</div>'
 			);
+
+			if( isGlobalJQuery ){
+				// jQuery がある場合
+				var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote').eq(0);
+				$targetElm.summernote({
+					// TODO: 隠蔽したい。
+					placeholder: '',
+					tabsize: 2,
+					height: 90 + (18 * rows),
+					toolbar: [
+						['style', ['style']],
+						['font', ['bold', 'underline', 'clear']],
+						['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['table', ['table']],
+						['insert', ['link', 'picture', 'video']],
+						['view', ['fullscreen', 'codeview', 'help']]
+					]
+				});
+				$targetElm.summernote('code', data.src);
+			}else{
+				// jQuery がない場合
+				console.error('broccoli-field-summernoteフィールドで Summernote (WYSIWYG)を利用するには、グローバルスコープに jQuery がロードされている必要があります。');
+				$(elm).find('.broccoli-field-summernote').append( $('<textarea class="form-control">')
+					.val(data.src)
+					.attr({
+						"rows": rows
+					})
+				);
+			}
 		}
+
+
+
 
 		new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
 			callback();
@@ -13523,8 +13548,17 @@ window.BroccoliFieldSummernote = function(broccoli){
 		options = options || {};
 		options.message = options.message || function(msg){};//ユーザーへのメッセージテキストを送信
 		var rtn = {};
+		var $dom = $(elm);
 
-		if( isGlobalJQuery ){
+		var rows = 12;
+		if( mod.rows ){
+			rows = mod.rows;
+		}
+
+		if( rows == 1 && $dom.find('input[type=text]').length ){
+			rtn.src = $dom.find('input[type=text]').val();
+
+		}else if( isGlobalJQuery ){
 			// jQuery がある場合
 			var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote').eq(0);
 				// TODO: 隠蔽したい。
@@ -13533,7 +13567,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 
 		}else{
 			// jQuery がない場合
-			rtn.src =$(elm).find('.broccoli-field-summernote textarea').val();
+			rtn.src = $dom.find('.broccoli-field-summernote textarea').val();
 		}
 		rtn.editor = '';
 

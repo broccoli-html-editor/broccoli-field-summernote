@@ -48,6 +48,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.1.2 (リリース日未定)
+
+- `rows` オプションを追加。
+
 ### broccoli-field-summernote v0.1.1 (2020年6月6日)
 
 - クライアント側リソースのパスが合わない不具合を修正。

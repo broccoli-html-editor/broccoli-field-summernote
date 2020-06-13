@@ -14,6 +14,28 @@
                         },
                         "anchor": "",
                         "dec": ""
+                    },
+                    {
+                        "modId": "proj:wysiwyg/summernote_2liner",
+                        "fields": {
+                            "main": {
+                                "src": "<p>1ラインで表現します。</p>",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "proj:wysiwyg/summernote_1liner",
+                        "fields": {
+                            "main": {
+                                "src": "",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
                     }
                 ]
             },
