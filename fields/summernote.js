@@ -13373,6 +13373,14 @@ window.BroccoliFieldSummernote = function(broccoli){
 	var $ = require('jquery');
 	var isGlobalJQuery = ( window.jQuery ? true : false );
 
+	function htmlspecialchars(text){
+		text = text.split(/\&/g).join('&amp;');
+		text = text.split(/\</g).join('&lt;');
+		text = text.split(/\>/g).join('&gt;');
+		text = text.split(/\"/g).join('&quot;');
+		return text;
+	}
+
 	/**
 	 * データを正規化する (Client Side)
 	 * このメソッドは、同期的に振る舞います。
@@ -13439,33 +13447,33 @@ window.BroccoliFieldSummernote = function(broccoli){
 			data.editor = '';
 		}
 
-		switch( data.editor ){
-			case 'markdown':
-				var marked = require('marked');
-				marked.setOptions({
-					renderer: new marked.Renderer(),
-					gfm: true,
-					headerIds: false,
-					tables: true,
-					breaks: false,
-					pedantic: false,
-					sanitize: false,
-					smartLists: true,
-					smartypants: false,
-					xhtml: true
-				});
-				data.src = marked(data.src);
-				break;
-			case 'text':
-				// HTML特殊文字変換
-				data.src = data.src.split(/\&/g).join('&amp;');
-				data.src = data.src.split(/\</g).join('&lt;');
-				data.src = data.src.split(/\>/g).join('&gt;');
-				data.src = data.src.split(/\"/g).join('&quot;');
+		if( rows != 1 ){
 
-				// 改行コードは改行タグに変換
-				data.src = data.src.split(/\r\n|\r|\n/g).join('<br />');
-				break;
+			switch( data.editor ){
+				case 'markdown':
+					var marked = require('marked');
+					marked.setOptions({
+						renderer: new marked.Renderer(),
+						gfm: true,
+						headerIds: false,
+						tables: true,
+						breaks: false,
+						pedantic: false,
+						sanitize: false,
+						smartLists: true,
+						smartypants: false,
+						xhtml: true
+					});
+					data.src = marked(data.src);
+					break;
+				case 'text':
+					// HTML特殊文字変換
+					data.src = htmlspecialchars(data.src);
+
+					// 改行コードは改行タグに変換
+					data.src = data.src.split(/\r\n|\r|\n/g).join('<br />');
+					break;
+			}
 		}
 
 
@@ -13481,6 +13489,15 @@ window.BroccoliFieldSummernote = function(broccoli){
 				.css({'width':'100%'})
 			;
 			$div.append( $formElm );
+
+			$div
+				.append( $('<p>')
+					.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="" /> HTML</label></span>'))
+					.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="text" /> テキスト</label></span>'))
+					.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="markdown" /> Markdown</label></span>'))
+				)
+			;
+			$div.find('input[type=radio][name=editor-'+mod.name+'][value="'+data.editor+'"]').attr({'checked':'checked'});
 
 		}else{
 
@@ -13555,8 +13572,12 @@ window.BroccoliFieldSummernote = function(broccoli){
 			rows = mod.rows;
 		}
 
+		rtn.src = '';
+		rtn.editor = '';
+
 		if( rows == 1 && $dom.find('input[type=text]').length ){
 			rtn.src = $dom.find('input[type=text]').val();
+			rtn.editor = $dom.find('input[type=radio][name=editor-'+mod.name+']:checked').val();
 
 		}else if( isGlobalJQuery ){
 			// jQuery がある場合
@@ -13569,7 +13590,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 			// jQuery がない場合
 			rtn.src = $dom.find('.broccoli-field-summernote textarea').val();
 		}
-		rtn.editor = '';
 
 
 		rtn = JSON.parse( JSON.stringify(rtn) );
