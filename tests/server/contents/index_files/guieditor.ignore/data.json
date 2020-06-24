@@ -1,0 +1,34 @@
+{
+    "bowl": {
+        "main": {
+            "modId": "_sys/root",
+            "fields": {
+                "main": [
+                    {
+                        "modId": "proj:wysiwyg/summernote",
+                        "fields": {
+                            "main": {
+                                "src": "<h1>Summernoteフィールドを導入しました。</h1>",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "proj:wysiwyg/summernote_2liner",
+                        "fields": {
+                            "main": ""
+                        }
+                    },
+                    {
+                        "modId": "proj:wysiwyg/summernote_1liner",
+                        "fields": {
+                            "main": ""
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
