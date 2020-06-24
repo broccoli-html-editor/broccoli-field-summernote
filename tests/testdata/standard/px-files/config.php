@@ -398,8 +398,9 @@ return call_user_func( function(){
 					'summernote.js',
 					"summernote/summernote.min.css",
 					"summernote/summernote.min.js",
+					"plugins/summernote-cleaner.js",
 				),
-				'function' => 'window.BroccoliFieldSummernote'
+				'function' => 'window.BroccoliFieldSummernote',
 			),
 		),
 	);

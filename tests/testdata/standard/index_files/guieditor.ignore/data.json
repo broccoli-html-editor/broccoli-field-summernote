@@ -8,7 +8,7 @@
                         "modId": "proj:wysiwyg/summernote",
                         "fields": {
                             "main": {
-                                "src": "<h2>Summernote エディタを導入しました。</h2><p>これはWYSIWYG機能を使用して書いています。</p>",
+                                "src": "<h2>Summernote エディタを導入しました。</h2>\n<p>これは<b><u>WYSIWYG機能を使用して書いています</u></b>。Summernote エディタを導入しました。</p>\n<p><a href=\"https://github.com/DiemenDesign/summernote-cleaner\" target=\"_blank\">HTMLをきれいにするプラグイン</a>も導入しています。</p>\n<p>これはWYSIWYG機能を使用して書いています。<a href=\"https://summernote.org/\" target=\"_blank\">Summernote</a> エディタを導入しました。これはWYSIWYG機能を使用して書いています。Summernote エディタを導入しました。<br></p>",
                                 "editor": ""
                             }
                         },
@@ -19,7 +19,7 @@
                         "modId": "proj:wysiwyg/summernote_2liner",
                         "fields": {
                             "main": {
-                                "src": "<p>1ラインで表現します。</p>",
+                                "src": "<p>1ラインで表現します。1ラインのフィールドでは、 WYSIWYGは起動しません。</p>",
                                 "editor": ""
                             }
                         },

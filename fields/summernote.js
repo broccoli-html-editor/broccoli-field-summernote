@@ -13521,8 +13521,48 @@ window.BroccoliFieldSummernote = function(broccoli){
 						['para', ['ul', 'ol', 'paragraph']],
 						['table', ['table']],
 						['insert', ['link', 'picture', 'video']],
+						['cleaner',['cleaner']], // The Button
 						['view', ['fullscreen', 'codeview', 'help']]
 					]
+					,
+					cleaner:{
+						action: 'both', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+						newline: '<p><br></p>', // Summernote's default is to use '<p><br></p>'
+						notStyle: 'position:absolute;top:100px;left:0;right:0', // Position of Notification
+						icon: '<i class="note-icon">Clean</i>',
+						keepHtml: false, // Remove all Html formats
+						keepOnlyTags: [ // If keepHtml is true, remove all tags except these
+							'<h1>','<h2>','<h3>','<h4>','<h5>','<h6>',
+							'<p>',
+							'<br>',
+							'<a>',
+							'<ul>', '<ol>', '<li>',
+							'<dl>', '<dt>', '<dd>',
+							'<table>', '<thead>', '<tbody>', '<tfoot>', '<tr>', '<th>', '<td>',
+							'<b>',
+							'<strong>',
+							'<em>',
+							'<code>', '<pre>'
+						],
+						keepClasses: false, // Remove Classes
+						badTags: [ // Remove full tags with contents
+							'style',
+							'script',
+							'applet',
+							'embed',
+							'noframes',
+							'noscript',
+							'html'
+						],
+						badAttributes: [ // Remove attributes from remaining tags
+							'style',
+							'start',
+							'id'
+						],
+						limitChars: false, // 0/false|# 0/false disables option
+						limitDisplay: 'both', // text|html|both
+						limitStop: false // true/false
+					}
 				});
 				$targetElm.summernote('code', data.src);
 			}else{
