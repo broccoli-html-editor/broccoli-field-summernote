@@ -27,6 +27,7 @@ require_once ('../../vendor/autoload.php');
 <script src="../../fields/summernote.js"></script>
 <link rel="stylesheet" href="../../fields/summernote/summernote.min.css" />
 <script src="../../fields/summernote/summernote.min.js"></script>
+<script src="../../fields/plugins/summernote-cleaner.js"></script>
 
 <!-- local -->
 <link rel="stylesheet" href="./editor_files/styles.css" />
