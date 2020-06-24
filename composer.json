@@ -9,6 +9,17 @@
             "email": "tomk79@gmail.com"
         }
     ],
+    "scripts":{
+        "start": [
+            "php -S 127.0.0.1:8088 -t ./"
+        ],
+        "preview": [
+            "open \"http://127.0.0.1:8088/tests/server/editor.php\""
+        ]
+    } ,
+    "config": {
+        "process-timeout": 0
+    },
     "repositories": [
     ],
 	"minimum-stability": "dev",
