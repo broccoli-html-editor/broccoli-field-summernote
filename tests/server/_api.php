@@ -43,6 +43,7 @@ $broccoli->init(array(
 		$fin .= '<script data-broccoli-receive-message="yes">' . "\n";
 		$fin .= 'window.addEventListener(\'message\',(function() {' . "\n";
 		$fin .= 'return function f(event) {' . "\n";
+		$fin .= 'if(!event.data.scriptUrl){return;}' . "\n";
 		$fin .= 'var s=document.createElement(\'script\');' . "\n";
 		$fin .= 'document.querySelector(\'body\').appendChild(s);s.src=event.data.scriptUrl;' . "\n";
 		$fin .= 'window.removeEventListener(\'message\', f, false);' . "\n";

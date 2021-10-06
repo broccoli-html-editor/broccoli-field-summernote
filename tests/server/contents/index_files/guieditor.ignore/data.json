@@ -18,14 +18,24 @@
                     {
                         "modId": "proj:wysiwyg/summernote_2liner",
                         "fields": {
-                            "main": ""
-                        }
+                            "main": {
+                                "src": "1行で表現するときは、Summernoteは呼び出されません。",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
                     },
                     {
                         "modId": "proj:wysiwyg/summernote_1liner",
                         "fields": {
-                            "main": ""
-                        }
+                            "main": {
+                                "src": "<p>2行のときは呼び出されます。</p>",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
                     }
                 ]
             }
