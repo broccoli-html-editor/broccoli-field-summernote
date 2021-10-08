@@ -17,8 +17,11 @@ class summernote extends \broccoliHtmlEditor\fieldBase{
 	 */
 	public function bind( $fieldData, $mode, $mod ){
 		$rtn = '';
-		if(is_array($fieldData) && is_string(@$fieldData['src'])){
+		if(is_array($fieldData) && isset($fieldData['src']) && is_string($fieldData['src'])){
 			$rtn = ''.$fieldData['src'];
+			if( !isset($fieldData['editor']) ){
+				$fieldData['editor'] = null;
+			}
 
 			switch( $fieldData['editor'] ){
 				case 'text':
@@ -32,6 +35,8 @@ class summernote extends \broccoliHtmlEditor\fieldBase{
 				default:
 					break;
 			}
+		}elseif(is_string($fieldData) && strlen($fieldData)){
+			$rtn = ''.$fieldData;
 		}
 		if( $mode == 'canvas' && !strlen(trim($rtn)) ){
 			$rtn = '<span style="color:#999;background-color:#ddd;font-size:10px;padding:0 1em;max-width:100%;overflow:hidden;white-space:nowrap;">(ダブルクリックしてテキストを編集してください)</span>';
