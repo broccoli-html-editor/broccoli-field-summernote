@@ -1,5 +1,6 @@
 window.BroccoliFieldSummernote = function(broccoli){
-	var $ = require('jquery');
+	var jQuery = require('jquery');
+	var $ = jQuery;
 	var isGlobalJQuery = ( window.jQuery ? true : false );
 
 	function htmlspecialchars(text){
@@ -110,7 +111,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 		$(elm).html($div);
 
 		if( rows == 1 ){
-			var $formElm = $('<input type="text" class="form-control">')
+			var $formElm = $('<input type="text" class="px2-input">')
 				.attr({
 					"name": mod.name
 				})
@@ -148,8 +149,14 @@ window.BroccoliFieldSummernote = function(broccoli){
 						['font', ['bold', 'underline', 'clear']],
 						['color', ['color']],
 						['para', ['ul', 'ol', 'paragraph']],
-						['table', ['table']],
-						['insert', ['link', 'picture', 'video']],
+						['table', [
+							'table'
+						]],
+						['insert', [
+							'link'
+							// 'picture',
+							// 'video'
+						]],
 						['view', ['fullscreen', 'codeview', 'help']]
 					]
 				});

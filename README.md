@@ -51,6 +51,7 @@ $path_to_vendor = 'path/to/vendor/';
 ### broccoli-field-summernote v0.1.3 (リリース日未定)
 
 - データに不備がある場合に起きるエラーを修正。
+- WYSIWYG内での見出しスタイルの干渉を解決した。
 
 ### broccoli-field-summernote v0.1.2 (2020年8月12日)
 
