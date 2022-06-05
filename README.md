@@ -50,6 +50,7 @@ $path_to_vendor = 'path/to/vendor/';
 
 ### broccoli-field-summernote v0.1.3 (リリース日未定)
 
+- サポートするPHPのバージョンを `>=7.3.0` に変更。
 - データに不備がある場合に起きるエラーを修正。
 - WYSIWYG内での見出しスタイルの干渉を解決した。
 
