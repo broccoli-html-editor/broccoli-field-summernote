@@ -32,8 +32,10 @@ $path_to_vendor = 'path/to/vendor/';
         'file' => array(
             'summernote.css',
             'summernote.js',
-            "summernote/summernote.min.css",
-            "summernote/summernote.min.js",
+            "summernote/summernote-bs4.min.css",
+            "summernote/summernote-bs4.min.js",
+            "bootstrap4/css/bootstrap.min.css",
+            "bootstrap4/js/bootstrap.min.js"
         ),
         'function' => 'window.BroccoliFieldSummernote'
     ),
