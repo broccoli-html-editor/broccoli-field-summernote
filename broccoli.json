@@ -10,12 +10,12 @@
         "frontend": {
             "dir": "fields/",
             "file": [
-                "summernote.css",
-                "summernote.js",
+                "bootstrap4/css/bootstrap.min.css",
+                "bootstrap4/js/bootstrap.bundle.min.js",
                 "summernote/summernote-bs4.min.css",
                 "summernote/summernote-bs4.min.js",
-                "bootstrap4/css/bootstrap.min.css",
-                "bootstrap4/js/bootstrap.min.js"
+                "summernote.css",
+                "summernote.js"
             ],
             "function" : "window.BroccoliFieldSummernote"
         }
