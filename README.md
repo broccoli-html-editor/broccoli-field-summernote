@@ -48,6 +48,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.3.0 (リリース日未定)
+
+- 内部コードの構成を変更。
+
 ### broccoli-field-summernote v0.2.0 (2022年6月5日)
 
 - サポートするPHPのバージョンを `>=7.3.0` に変更。

@@ -15,12 +15,12 @@ require_once ('../../vendor/autoload.php');
 <link rel="stylesheet" href="./editor_files/libs/bootstrap/css/bootstrap.min.css" />
 
 <!-- px2style -->
-<script src="./editor_files/libs/px2style/dist/scripts.js"></script>
-<link rel="stylesheet" href="./editor_files/libs/px2style/dist/styles.css" />
+<script src="./editor_files/libs/px2style/dist/px2style.js"></script>
+<link rel="stylesheet" href="./editor_files/libs/px2style/dist/px2style.css" />
 
 <!-- broccoli -->
-<script src="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.min.js"></script>
-<link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.min.css" />
+<script src="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.js"></script>
+<link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.css" />
 
 <!-- broccoli - custom fields -->
 <link rel="stylesheet" href="../../fields/summernote.css" />

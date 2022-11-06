@@ -1,11 +1,34 @@
 {
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.2.1",
-    "jquery": "^3.5",
-    "marked": "^1.1.0",
-    "tiny-slider": "^2.9.1"
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "body-parser": "^1.17.1",
+    "iterate79": "^1.1.1",
+    "jquery": "^3.6.0",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.21",
+    "marked": "^4.0.12",
+    "mocha": "^3.2.0",
+    "px2style": "github:pickles2/px2style#develop",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "tiny-slider": "^2.9.1",
+    "twig-loader": "^0.5.5",
+    "url-parse": "^1.5.10",
+    "utils79": "^0.0.5"
   }
 }
