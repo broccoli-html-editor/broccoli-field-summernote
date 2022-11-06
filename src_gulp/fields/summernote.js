@@ -393,7 +393,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 		$ctrls
 			.append( $('<p>')
 				.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="" /> HTML</label></span>'))
-				.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="text" /> テキスト</label></span>'))
+				.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="text" /> '+broccoli.lb.get('ui_label.plain_text')+'</label></span>'))
 				.append($('<span style="margin-right: 10px;"><label><input type="radio" name="editor-'+htmlspecialchars(mod.name)+'" value="markdown" /> Markdown</label></span>'))
 			)
 		;
