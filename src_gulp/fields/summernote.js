@@ -145,19 +145,35 @@ window.BroccoliFieldSummernote = function(broccoli){
 					tabsize: 2,
 					height: 90 + (18 * rows),
 					toolbar: [
-						['style', ['style']],
-						['font', ['bold', 'underline', 'clear']],
-						['color', ['color']],
-						['para', ['ul', 'ol', 'paragraph']],
+						['style', [
+							'style',
+						]],
+						['font', [
+							'bold',
+							'underline',
+							'clear',
+						]],
+						['color', [
+							'color',
+						]],
+						['para', [
+							'ul',
+							'ol',
+							'paragraph',
+						]],
 						['table', [
-							'table'
+							'table',
 						]],
 						['insert', [
-							'link'
+							'link',
 							// 'picture',
-							// 'video'
+							// 'video',
 						]],
-						['view', ['fullscreen', 'codeview', 'help']]
+						['view', [
+							'fullscreen',
+							'codeview',
+							// 'help',
+						]],
 					]
 				});
 				$targetElm.summernote('code', data.src);
