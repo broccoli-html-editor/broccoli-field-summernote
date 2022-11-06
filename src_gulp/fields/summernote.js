@@ -13,6 +13,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 	} catch (e) {
 	}
 
+	var lastEditorType = '';
 	var templates = {
 		"frame": require('./templates/frame.twig'),
 	};
@@ -90,39 +91,14 @@ window.BroccoliFieldSummernote = function(broccoli){
 		if(typeof(data.editor) != typeof('')){
 			data.editor = '';
 		}
-
-		// switch( data.editor ){
-		// 	case 'markdown':
-		// 		var marked = require('marked');
-		// 		marked.setOptions({
-		// 			renderer: new marked.Renderer(),
-		// 			gfm: true,
-		// 			headerIds: false,
-		// 			tables: true,
-		// 			breaks: false,
-		// 			pedantic: false,
-		// 			sanitize: false,
-		// 			smartLists: true,
-		// 			smartypants: false,
-		// 			xhtml: true
-		// 		});
-		// 		data.src = marked.parse(data.src);
-		// 		break;
-		// 	case 'text':
-		// 		// HTML特殊文字変換
-		// 		data.src = htmlspecialchars(data.src);
-
-		// 		// 改行コードは改行タグに変換
-		// 		data.src = data.src.split(/\r\n|\r|\n/g).join('<br />');
-		// 		break;
-		// }
-
+		lastEditorType = data.editor;
 
 		var $div = $(templates.frame());
 		$(elm).html('').append( $div );
 		var $htmlEditor = $div.find('.broccoli-field-summernote__html'); // HTML(=Summernote) または 1行のとき
 		var $noHtmlTypeEditor = $div.find('.broccoli-field-summernote__other'); // 複数行のテキスト、Markdownのとき
 		var $ctrls = $div.find('.broccoli-field-summernote__ctrls');
+
 
 		// --------------------------------------
 		// エディターを初期化
@@ -425,20 +401,68 @@ window.BroccoliFieldSummernote = function(broccoli){
 
 		$ctrls.find('input[type=radio][name=editor-'+mod.name+']').on('change', function(){
 			var $this = $(this);
-			var val = $this.val();
+			var newEditorType = $this.val();
 
-			if( !val || rows == 1 ){
+			if( rows > 1 ){
+				// --------------------------------------
+				// editor 変更前の値を取得する
+				var currentValue = '';
+				if( isGlobalJQuery ){
+					// jQuery がある場合
+					var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote__summernote').eq(0);
+						// TODO: 隠蔽したい。
+
+					currentValue = $targetElm.summernote('code');
+
+				}else{
+					// jQuery がない場合
+					currentValue = $htmlEditor.find('textarea').val();
+				}
+				if( lastEditorType ){
+					if( editorLib == 'codemirror' && mod.codeMirror ){
+						currentValue = $noHtmlTypeEditor.find('textarea').val();
+					}else if( editorLib == 'ace' && mod.aceEditor ){
+						currentValue = mod.aceEditor.getValue();
+					}else{
+						currentValue = $noHtmlTypeEditor.find('textarea').val();
+					}
+				}
+				// --------------------------------------
+				// すべての入力欄の値を同期する
+				if( isGlobalJQuery ){
+					// jQuery がある場合
+					var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote__summernote').eq(0);
+						// TODO: 隠蔽したい。
+
+					$targetElm.summernote('code', currentValue);
+
+				}else{
+					// jQuery がない場合
+					$htmlEditor.find('textarea').val( currentValue );
+				}
+				if( !lastEditorType ){
+					if( editorLib == 'codemirror' && mod.codeMirror ){
+						$noHtmlTypeEditor.find('textarea').val( currentValue );
+					}else if( editorLib == 'ace' && mod.aceEditor ){
+						mod.aceEditor.setValue( currentValue );
+					}else{
+						$noHtmlTypeEditor.find('textarea').val( currentValue );
+					}
+				}
+			}
+
+			if( !newEditorType || rows == 1 ){
 				$htmlEditor.show();
 				$noHtmlTypeEditor.hide();
 			}else{
-				$htmlEditor.hide();
-				$noHtmlTypeEditor.show();
 
+				// --------------------------------------
+				// editor 変更
 				if( editorLib == 'codemirror' ){
-					if( val == 'text' ){
+					if( newEditorType == 'text' ){
 						mod.codeMirror.setOption("theme", "default");
 						mod.codeMirror.setOption("mode", "text");
-					}else if( val == 'markdown' ){
+					}else if( newEditorType == 'markdown' ){
 						mod.codeMirror.setOption("theme", "mdn-like");
 						mod.codeMirror.setOption("mode", "markdown");
 					}else{
@@ -447,10 +471,10 @@ window.BroccoliFieldSummernote = function(broccoli){
 					}
 					updateCodeMirrorHeight();
 				}else if( editorLib == 'ace' && mod.aceEditor ){
-					if( val == 'text' ){
+					if( newEditorType == 'text' ){
 						mod.aceEditor.setTheme("ace/theme/katzenmilch");
 						mod.aceEditor.getSession().setMode("ace/mode/plain_text");
-					}else if( val == 'markdown' ){
+					}else if( newEditorType == 'markdown' ){
 						mod.aceEditor.setTheme("ace/theme/github");
 						mod.aceEditor.getSession().setMode("ace/mode/markdown");
 					}else{
@@ -458,7 +482,12 @@ window.BroccoliFieldSummernote = function(broccoli){
 						mod.aceEditor.getSession().setMode("ace/mode/html");
 					}
 				}
+
+				$htmlEditor.hide();
+				$noHtmlTypeEditor.show();
 			}
+
+			lastEditorType = newEditorType;
 		});
 
 		if( !data.editor || rows == 1 ){
