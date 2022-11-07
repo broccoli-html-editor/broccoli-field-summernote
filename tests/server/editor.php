@@ -14,6 +14,28 @@ require_once ('../../vendor/autoload.php');
 <script src="./editor_files/libs/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./editor_files/libs/bootstrap/css/bootstrap.min.css" />
 
+<!-- Ace Editor -->
+<script src="./editor_files/libs/ace/ace.js"></script>
+
+<!-- CodeMirror -->
+<link rel=stylesheet href="./editor_files/libs/codemirror/lib/codemirror.css" />
+<link rel=stylesheet href="./editor_files/libs/codemirror/theme/ambiance.css" />
+<link rel=stylesheet href="./editor_files/libs/codemirror/theme/mdn-like.css" />
+<link rel=stylesheet href="./editor_files/libs/codemirror/theme/monokai.css" />
+<link rel=stylesheet href="./editor_files/libs/codemirror/theme/eclipse.css" />
+<link rel=stylesheet href="./editor_files/libs/codemirror/theme/elegant.css" />
+<script src="./editor_files/libs/codemirror/lib/codemirror.js"></script>
+<script src="./editor_files/libs/codemirror/mode/xml/xml.js"></script>
+<script src="./editor_files/libs/codemirror/mode/javascript/javascript.js"></script>
+<script src="./editor_files/libs/codemirror/mode/css/css.js"></script>
+<script src="./editor_files/libs/codemirror/mode/sass/sass.js"></script>
+<script src="./editor_files/libs/codemirror/mode/markdown/markdown.js"></script>
+<script src="./editor_files/libs/codemirror/mode/php/php.js"></script>
+<script src="./editor_files/libs/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+<!-- Keypress -->
+<script src="./editor_files/libs/dmauro-Keypress/keypress-2.1.5.min.js"></script>
+
 <!-- px2style -->
 <script src="./editor_files/libs/px2style/dist/px2style.js"></script>
 <link rel="stylesheet" href="./editor_files/libs/px2style/dist/px2style.css" />
