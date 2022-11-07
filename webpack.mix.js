@@ -33,7 +33,7 @@ mix
 
 	// --------------------------------------
 	// table-tag-editor
-	.js('src_gulp/fields/summernote.js', 'fields/')
-	.sass('src_gulp/fields/summernote.scss', 'fields/')
+	.js('src_client/fields/summernote.js', 'fields/')
+	.sass('src_client/fields/summernote.scss', 'fields/')
 
 ;
