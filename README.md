@@ -52,8 +52,8 @@ $path_to_vendor = 'path/to/vendor/';
 
 ### broccoli-field-summernote v0.3.0 (リリース日未定)
 
-- 内部コードの構成を変更。
-- その他、細かいUIの改善。
+- プレーンテキスト、Markdown と切り替えて使えるようになった。
+- 内部コードの構成を変更、その他、細かいUIの改善。
 
 ### broccoli-field-summernote v0.2.0 (2022年6月5日)
 

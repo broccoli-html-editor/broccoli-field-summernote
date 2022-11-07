@@ -445,7 +445,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 				}
 				if( !lastEditorType ){
 					if( editorLib == 'codemirror' && mod.codeMirror ){
-						$noHtmlTypeEditor.find('textarea').val( currentValue );
+						mod.codeMirror.getDoc().setValue( currentValue );
 					}else if( editorLib == 'ace' && mod.aceEditor ){
 						mod.aceEditor.setValue( currentValue );
 					}else{
