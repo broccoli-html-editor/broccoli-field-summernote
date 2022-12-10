@@ -34,7 +34,7 @@ module.exports = function(broccoli){
 			}
 		}
 		if( mode == 'canvas' && !rtn.length ){
-			rtn = '<span style="color:#999;background-color:#ddd;font-size:10px;padding:0 1em;max-width:100%;overflow:hidden;white-space:nowrap;">(ダブルクリックしてテキストを編集してください)</span>';
+			rtn = '<span style="color:#999;background-color:#ddd;font-size:10px;padding:0 1em;max-width:100%;overflow:hidden;white-space:nowrap;">('+broccoli.lb().get('ui_message.double_click_to_edit_text')+')</span>';
 		}
 		// setTimeout(function(){
 			callback(rtn);
