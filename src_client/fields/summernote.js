@@ -100,81 +100,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var $ctrls = $div.find('.broccoli-field-summernote__ctrls');
 		var $formElm;
 
-
-		// AceEditor: 編集中のコンテンツ量に合わせて、
-		// AceEditor編集欄のサイズを広げる
-		var updateAceHeight = function() {
-			var h =
-				mod.aceEditor.getSession().getScreenLength()
-				* mod.aceEditor.renderer.lineHeight
-				+ mod.aceEditor.renderer.scrollBar.getWidth()
-			;
-			if( h < mod.aceEditor.renderer.lineHeight * rows ){
-				h = mod.aceEditor.renderer.lineHeight * rows;
-			}
-			$formElm.eq(0).height(h.toString() + "px");
-			mod.aceEditor.resize();
-		};
-
-		// AceEditor: スクロール位置の調整
-		var updateAceScroll = function() {
-			var $lightbox = $formElm.closest('.broccoli__lightbox-inner-body');
-			var lightbox_scrollTop = $lightbox.scrollTop();
-			var lightbox_offsetTop = $lightbox.offset().top;
-			var lightbox_height = $lightbox.height();
-			var form_offsetTop = $formElm.offset().top;
-			var selection = mod.aceEditor.getSelection();
-			var cursorRow = selection.getSelectionAnchor().row;
-			var cursorTop = mod.aceEditor.renderer.lineHeight * cursorRow;
-			var cursorOffsetTop = form_offsetTop + cursorTop;
-			var form_position_top = lightbox_scrollTop - lightbox_offsetTop + form_offsetTop;
-			var focusBuffer = 120;
-			if( cursorOffsetTop < 60 ){
-				// 上へ行きすぎた
-				$lightbox.scrollTop( form_position_top + cursorTop - focusBuffer );
-			}else if( cursorOffsetTop > lightbox_height - 40 ){
-				// 下へ行きすぎた
-				$lightbox.scrollTop( form_position_top + cursorTop - lightbox_height + focusBuffer + 100 );
-			}
-		};
-
-		// CodeMirror: 編集中のコンテンツ量に合わせて、
-		// CodeMirror編集欄のサイズを広げる
-		var updateCodeMirrorHeight = function() {
-			var h = (function(){
-				var h = 0;
-				for(var line = 0; line < mod.codeMirror.getDoc().lineCount(); line ++){
-					h += mod.codeMirror.getDoc().getLineHandle(line).height;
-				}
-				return h + 20;
-			})();
-			if( h < mod.codeMirror.defaultTextHeight() * rows ){
-				h = mod.codeMirror.defaultTextHeight() * rows;
-			}
-			mod.codeMirror.setSize(null, h);
-			mod.codeMirror.refresh();
-		};
-
-		// CodeMirror: スクロール位置の調整
-		var updateCodeMirrorScroll = function() {
-			var $lightbox = $formElm.closest('.broccoli__lightbox-inner-body');
-			var lightbox_scrollTop = $lightbox.scrollTop();
-			var lightbox_offsetTop = $lightbox.offset().top;
-			var lightbox_height = $lightbox.height();
-			var form_offsetTop = $formElm.offset().top;
-			var cursorTop = mod.codeMirror.cursorCoords().top;
-			var cursorOffsetTop = form_offsetTop + cursorTop;
-			var form_position_top = lightbox_scrollTop - lightbox_offsetTop + form_offsetTop;
-			var focusBuffer = 120;
-			if( cursorOffsetTop < 60 ){
-				// 上へ行きすぎた
-				$lightbox.scrollTop( form_position_top + cursorTop - focusBuffer );
-			}else if( cursorOffsetTop > lightbox_height - 60 ){
-				// 下へ行きすぎた
-				$lightbox.scrollTop( form_position_top + cursorTop - lightbox_height + focusBuffer + 120 );
-			}
-		};
-
 		// --------------------------------------
 		// エディターを初期化
 		if( rows == 1 ){
@@ -296,16 +221,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 					mod.aceEditor.getSession().setMode("ace/mode/html");
 				}
 
-				mod.aceEditor.getSession().on('change', function(){
-					updateAceHeight();
-					updateAceScroll();
-				});
-				mod.aceEditor.getSelection().on('changeCursor', function(){
-					updateAceHeight();
-					updateAceScroll();
-				});
-				setTimeout(updateAceHeight, 200);
-
 			}else{
 				$formElm = $('<textarea class="px2-input px2-input--block">')
 					.attr({
@@ -368,27 +283,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 				mod.codeMirror.save();
 			});
 			mod.codeMirror.setSize('100%', rows * mod.codeMirror.defaultTextHeight());
-
-			var timerUpdateCodeMirror;
-			mod.codeMirror.on('change', function(){
-				mod.codeMirror.save();
-				clearTimeout(timerUpdateCodeMirror);
-				timerUpdateCodeMirror = setTimeout(function(){
-					updateCodeMirrorHeight();
-					updateCodeMirrorScroll();
-				}, 100);
-			});
-			mod.codeMirror.on('cursorActivity', function(){
-				clearTimeout(timerUpdateCodeMirror);
-				timerUpdateCodeMirror = setTimeout(function(){
-					updateCodeMirrorHeight();
-					updateCodeMirrorScroll();
-				}, 5);
-			});
-			timerUpdateCodeMirror = setTimeout(function(){
-				updateCodeMirrorHeight();
-				updateCodeMirrorScroll();
-			}, 200);
 		}
 
 		// --------------------------------------
