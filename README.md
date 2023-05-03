@@ -50,7 +50,7 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
-### broccoli-field-summernote v0.3.1 (リリース日未定)
+### broccoli-field-summernote v0.3.1 (2023年5月4日)
 
 - 初期設置直後に Markdown で編集すると、編集内容が正しく保存されない不具合を修正した。
 - CodeMirror, Ace Editor 利用時に、エディタの高さを内容に合わせて自動調整する機能を削除した。(パフォーマンスに問題があったため)
