@@ -50,6 +50,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.3.1 (リリース日未定)
+
+- 初期設置直後に Markdown で編集すると、編集内容が正しく保存されない不具合を修正した。
+
 ### broccoli-field-summernote v0.3.0 (2022年12月29日)
 
 - プレーンテキスト、Markdown と切り替えて使えるようになった。

@@ -538,11 +538,13 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var $noHtmlTypeEditor = $dom.find('.broccoli-field-summernote__other'); // 複数行のテキスト、Markdownのとき
 		var $ctrls = $dom.find('.broccoli-field-summernote__ctrls');
 
+		rtn.editor = $ctrls.find('input[type=radio][name=editor-'+mod.name+']:checked').val();
+
 		if( rows == 1 && $htmlEditor.find('input[type=text]').length ){
 			rtn.src = $htmlEditor.find('input[type=text]').val();
 
 		}else{
-			if( !data.editor || data.editor == 'html' ){
+			if( !rtn.editor || rtn.editor == 'html' ){
 				if( isGlobalJQuery ){
 					// jQuery がある場合
 					var $targetElm = window.jQuery(elm).find('.broccoli-field-summernote__summernote').eq(0);
@@ -562,8 +564,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 				rtn.src = $noHtmlTypeEditor.find('textarea').val();
 			}
 		}
-
-		rtn.editor = $ctrls.find('input[type=radio][name=editor-'+mod.name+']:checked').val();
 
 		rtn = JSON.parse( JSON.stringify(rtn) );
 
