@@ -17,7 +17,13 @@
 		text-align: left;
 	}
 
+	// Code Mirror
 	.CodeMirror-scroll[draggable=true] {
 		cursor: inherit;
+	}
+
+	// summernote
+	.note-editor {
+		background-color: #fff;
 	}
 }

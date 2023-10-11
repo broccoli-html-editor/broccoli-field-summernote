@@ -51,6 +51,15 @@ require_once ('../../vendor/autoload.php');
 <link rel="stylesheet" href="../../fields/summernote.css" />
 <script src="../../fields/summernote.js"></script>
 
+<!-- darkmode -->
+<!-- <style>
+body {
+	color: #fff;
+	background-color: #000;
+}
+</style>
+<link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/themes/darkmode.css" /> -->
+
 </head>
 <body>
 	<div class="editor-frame">
