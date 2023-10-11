@@ -50,6 +50,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.3.2 (リリース日未定)
+
+- Bootstrap, summernote が提供するCSSの影響範囲を制限した。
+
 ### broccoli-field-summernote v0.3.1 (2023年5月4日)
 
 - 初期設置直後に Markdown で編集すると、編集内容が正しく保存されない不具合を修正した。

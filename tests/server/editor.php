@@ -10,10 +10,6 @@ require_once ('../../vendor/autoload.php');
 <!-- jQuery -->
 <script src="./editor_files/libs/jquery-3.4.1.min.js"></script>
 
-<!-- Bootstrap -->
-<script src="./editor_files/libs/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="./editor_files/libs/bootstrap/css/bootstrap.min.css" />
-
 <!-- Ace Editor -->
 <script src="./editor_files/libs/ace/ace.js"></script>
 
@@ -40,19 +36,20 @@ require_once ('../../vendor/autoload.php');
 <script src="./editor_files/libs/px2style/dist/px2style.js"></script>
 <link rel="stylesheet" href="./editor_files/libs/px2style/dist/px2style.css" />
 
+<!-- local -->
+<link rel="stylesheet" href="./editor_files/styles.css" />
+<script src="./editor_files/script.js"></script>
+
 <!-- broccoli -->
 <script src="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.js"></script>
 <link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.css" />
 
 <!-- broccoli - custom fields -->
+<link rel="stylesheet" href="../../fields/summernote/summernote-lite-fonts.css" />
+<link rel="stylesheet" href="../../fields/summernote/summernote-lite.css" />
+<script src="../../fields/summernote/summernote-lite.js"></script>
 <link rel="stylesheet" href="../../fields/summernote.css" />
 <script src="../../fields/summernote.js"></script>
-<link rel="stylesheet" href="../../fields/summernote/summernote.min.css" />
-<script src="../../fields/summernote/summernote.min.js"></script>
-
-<!-- local -->
-<link rel="stylesheet" href="./editor_files/styles.css" />
-<script src="./editor_files/script.js"></script>
 
 </head>
 <body>
