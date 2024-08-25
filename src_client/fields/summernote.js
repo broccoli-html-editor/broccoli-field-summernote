@@ -212,9 +212,10 @@ window.BroccoliFieldSummernote = function(broccoli){
 				$summernoteEditorElement.summernote('code', data.src);
 
 				$iframeWindow.on('keydown', function(event){
-					if( event.metaKey || event.metaKey && event.metaKey == 's' ){
-						event.preventDefault();
-						const keyboardEvent = new KeyboardEvent('keydown', event);
+					const origEvent = event.originalEvent;
+					if( (origEvent.metaKey || origEvent.ctrlKey) && origEvent.metaKey == 's' ){
+						origEvent.preventDefault();
+						const keyboardEvent = new KeyboardEvent('keydown', origEvent);
 						document.dispatchEvent(keyboardEvent);
 					}
 				});
