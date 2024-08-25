@@ -201,6 +201,9 @@ window.BroccoliFieldSummernote = function(broccoli){
 						onInit: function(){
 							setTimeout(justifyEditorHeight, 200);
 						},
+						onChange: function(){
+							setTimeout(justifyEditorHeight, 200);
+						},
 						onFocus: function(){
 							setTimeout(justifyEditorHeight, 200);
 						},
