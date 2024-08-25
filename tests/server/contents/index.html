@@ -5,7 +5,18 @@
 </head>
 <body>
 <div class="contents" data-contents="main">
-<div><h1>Summernoteフィールドを導入しました。</h1></div><div>1行で表現するときは、Summernoteは呼び出されません。</div><div><p>2行のときは呼び出されます。</p></div>
+<div><h1>Summernoteフィールドを導入しました。</h1>
+<p>任意のHTMLコードをWYSIWYGで編集します。</p></div><div>1行で表現するときは、Summernoteは呼び出されません。</div><div><p>2行のときは呼び出されます。</p>
+</div><div><p class="cont-red">WYSIWYGでコードを編集することはできますか？</p>
+<script>console.log('SCRIPT');</script>
+<style>
+  p.cont-red {color: #f00;}
+  label {color: #f00 !important;}
+</style>
+</div><div>これはプレーンテキストなので、間違ったHTMLを書いても成立します。&lt;/div&gt;&lt;/div&gt;</div><div><p>markdown で <code>&lt;/div&gt;</code> を書くことはできますか？</p>
+
+<p>はい、許容されます。</p>
+</div>
 </div><!-- /main -->
 </body>
 </html>

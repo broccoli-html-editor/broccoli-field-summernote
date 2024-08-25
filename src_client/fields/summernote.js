@@ -26,6 +26,13 @@ window.BroccoliFieldSummernote = function(broccoli){
 		return text;
 	}
 
+	// HTMLの不整合を吸収する
+	function sanitizeHtml(src){
+		const $tmpElement = document.createElement('div');
+		$tmpElement.innerHTML = src;
+		return $tmpElement.innerHTML;
+	}
+
 	/**
 	 * データを正規化する (Client Side)
 	 * このメソッドは、同期的に振る舞います。
@@ -450,6 +457,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 					// jQuery がない場合
 					rtn.src = $htmlEditor.find('textarea').val();
 				}
+
 			}else if( editorLib == 'codemirror' && mod.codeMirror ){
 				rtn.src = $noHtmlTypeEditor.find('textarea').val();
 			}else if( editorLib == 'ace' && mod.aceEditor ){
@@ -457,6 +465,10 @@ window.BroccoliFieldSummernote = function(broccoli){
 			}else{
 				rtn.src = $noHtmlTypeEditor.find('textarea').val();
 			}
+		}
+
+		if( !rtn.editor || rtn.editor == 'html' ){
+			rtn.src = sanitizeHtml(rtn.src);
 		}
 
 		rtn = JSON.parse( JSON.stringify(rtn) );
