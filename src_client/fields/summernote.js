@@ -154,6 +154,12 @@ window.BroccoliFieldSummernote = function(broccoli){
 				$summernoteEditorElement = window.jQuery('<div>');
 				$iframeContent.find('body').append($summernoteEditorElement);
 
+				function justifyEditorHeight(){
+					$iframe.css( {
+						height: $iframeContent.find('.note-editor').outerHeight(),
+					} );
+				}
+
 				$summernoteEditorElement.summernote({
 					placeholder: '',
 					tabsize: 2,
@@ -188,16 +194,20 @@ window.BroccoliFieldSummernote = function(broccoli){
 							'codeview',
 							// 'help',
 						]],
-					]
+					],
+					callbacks: {
+						onInit: function(){
+							setTimeout(justifyEditorHeight, 200);
+						},
+						onFocus: function(){
+							setTimeout(justifyEditorHeight, 200);
+						},
+						onBlur: function(){
+							setTimeout(justifyEditorHeight, 200);
+						},
+					},
 				});
 				$summernoteEditorElement.summernote('code', data.src);
-
-				setTimeout(()=>{
-					// 高さ調整
-					$iframe.css( {
-						height: $iframeContent.find('.note-editor').outerHeight(),
-					} );
-				}, 100);
 
 				$iframeWindow.on('keydown', function(event){
 					if( event.metaKey || event.metaKey && event.metaKey == 's' ){
