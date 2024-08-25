@@ -198,10 +198,10 @@ window.BroccoliFieldSummernote = function(broccoli){
 						]],
 					],
 					callbacks: {
-						onInit: function(){ setTimeout(justifyEditorHeight, 200); },
-						onChange: function(){ setTimeout(justifyEditorHeight, 200); },
-						onFocus: function(){ setTimeout(justifyEditorHeight, 200); },
-						onBlur: function(){ setTimeout(justifyEditorHeight, 200); },
+						onInit: function(){ setTimeout(justifyEditorHeight, 1000); },
+						// onChange: function(){ setTimeout(justifyEditorHeight, 1000); },
+						onFocus: function(){ setTimeout(justifyEditorHeight, 1000); },
+						onBlur: function(){ setTimeout(justifyEditorHeight, 1000); },
 					},
 				});
 				$summernoteEditorElement.summernote('code', data.src);
@@ -215,9 +215,10 @@ window.BroccoliFieldSummernote = function(broccoli){
 							document.dispatchEvent(keyboardEvent);
 						}
 					})
-					.on('load', function(event){
-						setTimeout(justifyEditorHeight, 200);
-					});
+					// .on('load', function(event){
+					// 	setTimeout(justifyEditorHeight, 200);
+					// })
+					;
 
 			}else{
 				// jQuery がない場合
