@@ -137,7 +137,9 @@ window.BroccoliFieldSummernote = function(broccoli){
 
 				iframeElement.contentWindow.document.write(`<!DOCTYPE html>
 				<html>
-					<head></head>
+					<head>
+						<style>html, body {padding: 0; margin: 0;}</style>
+					</head>
 					<body class="broccoli-field-summernote">
 						<div></div>
 					</body>
