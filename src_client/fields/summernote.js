@@ -198,30 +198,26 @@ window.BroccoliFieldSummernote = function(broccoli){
 						]],
 					],
 					callbacks: {
-						onInit: function(){
-							setTimeout(justifyEditorHeight, 200);
-						},
-						onChange: function(){
-							setTimeout(justifyEditorHeight, 200);
-						},
-						onFocus: function(){
-							setTimeout(justifyEditorHeight, 200);
-						},
-						onBlur: function(){
-							setTimeout(justifyEditorHeight, 200);
-						},
+						onInit: function(){ setTimeout(justifyEditorHeight, 200); },
+						onChange: function(){ setTimeout(justifyEditorHeight, 200); },
+						onFocus: function(){ setTimeout(justifyEditorHeight, 200); },
+						onBlur: function(){ setTimeout(justifyEditorHeight, 200); },
 					},
 				});
 				$summernoteEditorElement.summernote('code', data.src);
 
-				$iframeWindow.on('keydown', function(event){
-					const origEvent = event.originalEvent;
-					if( (origEvent.metaKey || origEvent.ctrlKey) && origEvent.metaKey == 's' ){
-						origEvent.preventDefault();
-						const keyboardEvent = new KeyboardEvent('keydown', origEvent);
-						document.dispatchEvent(keyboardEvent);
-					}
-				});
+				$iframeWindow
+					.on('keydown', function(event){
+						const origEvent = event.originalEvent;
+						if( (origEvent.metaKey || origEvent.ctrlKey) && origEvent.key == 's' ){
+							origEvent.preventDefault();
+							const keyboardEvent = new KeyboardEvent('keydown', origEvent);
+							document.dispatchEvent(keyboardEvent);
+						}
+					})
+					.on('load', function(event){
+						setTimeout(justifyEditorHeight, 200);
+					});
 
 			}else{
 				// jQuery がない場合
