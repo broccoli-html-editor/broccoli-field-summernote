@@ -47,4 +47,10 @@ module.exports = class {
 			resolve(returnVal);
 		});
 	}
+
+	async setEditorType(editor) {
+		return new Promise((resolve, reject)=>{
+			resolve();
+		});
+	}
 }

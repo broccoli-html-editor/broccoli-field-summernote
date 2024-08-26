@@ -21,6 +21,9 @@ window.BroccoliFieldSummernote = function(broccoli){
 		"frame": require('./templates/frame.twig'),
 	};
 
+	/**
+	 * HTMLエスケープ
+	 */
 	function htmlspecialchars(text){
 		text = text.split(/\&/g).join('&amp;');
 		text = text.split(/\</g).join('&lt;');
@@ -164,18 +167,21 @@ window.BroccoliFieldSummernote = function(broccoli){
 		});
 
 		await htmlEditor.initialize($htmlEditor)
-			.then(()=>htmlEditor.setValue(data.src));
+			.then(()=>htmlEditor.setValue(data.src))
+			.then(()=>htmlEditor.setEditorType(data.editor));
 		await textEditor.initialize($noHtmlTypeEditor)
-			.then(()=>textEditor.setValue(data.src));
+			.then(()=>textEditor.setValue(data.src))
+			.then(()=>textEditor.setEditorType(data.editor));
 
 		// --------------------------------------
 		// コントロール
 		$ctrls.find('input[type=radio][name=editor-'+mod.name+'][value="'+data.editor+'"]').attr({'checked':'checked'});
-		$ctrls.find('input[type=radio][name=editor-'+mod.name+']').on('change', async function(){
-			var $this = $(this);
-			var newEditorType = $this.val();
+		const $ctrlsEditorSwitch = $ctrls.find('input[type=radio][name=editor-'+mod.name+']');
+		$ctrlsEditorSwitch
+			.on('change', async function(){
+				var $this = $(this);
+				var newEditorType = $this.val();
 
-			if( rows > 1 ){
 				// --------------------------------------
 				// editor 変更前の値を取得する
 				var currentValue = await htmlEditor.getValue();
@@ -187,46 +193,22 @@ window.BroccoliFieldSummernote = function(broccoli){
 				// すべての入力欄の値を同期する
 				await htmlEditor.setValue(currentValue);
 				await textEditor.setValue(currentValue);
-			}
 
-			if( !newEditorType || rows == 1 ){
-				$htmlEditor.show();
-				$noHtmlTypeEditor.hide();
-			}else{
-				$htmlEditor.hide();
-				$noHtmlTypeEditor.show();
+				if( !newEditorType || newEditorType == 'html' ){
+					$htmlEditor.show();
+					$noHtmlTypeEditor.hide();
+				}else{
+					$htmlEditor.hide();
+					$noHtmlTypeEditor.show();
 
-				// --------------------------------------
-				// editor 変更
-				if( editorLib == 'codemirror' ){
-					if( newEditorType == 'text' ){
-						mod.codeMirror.setOption("theme", "default");
-						mod.codeMirror.setOption("mode", "text");
-					}else if( newEditorType == 'markdown' ){
-						mod.codeMirror.setOption("theme", "mdn-like");
-						mod.codeMirror.setOption("mode", "markdown");
-					}else{
-						mod.codeMirror.setOption("theme", "monokai");
-						mod.codeMirror.setOption("mode", "htmlmixed");
-					}
-				}else if( editorLib == 'ace' && mod.aceEditor ){
-					if( newEditorType == 'text' ){
-						mod.aceEditor.setTheme("ace/theme/katzenmilch");
-						mod.aceEditor.getSession().setMode("ace/mode/plain_text");
-					}else if( newEditorType == 'markdown' ){
-						mod.aceEditor.setTheme("ace/theme/github");
-						mod.aceEditor.getSession().setMode("ace/mode/markdown");
-					}else{
-						mod.aceEditor.setTheme("ace/theme/monokai");
-						mod.aceEditor.getSession().setMode("ace/mode/html");
-					}
 				}
-			}
+				await htmlEditor.setEditorType(newEditorType);
+				await textEditor.setEditorType(newEditorType);
 
-			lastEditorType = newEditorType;
-		});
+				lastEditorType = newEditorType;
+			});
 
-		if( !data.editor || rows == 1 ){
+		if( !data.editor || data.editor == 'html' ){
 			$htmlEditor.show();
 			$noHtmlTypeEditor.hide();
 		}else{

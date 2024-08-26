@@ -92,4 +92,20 @@ const data = {
 			resolve(returnVal);
 		});
 	}
+
+	async setEditorType(editor) {
+		return new Promise((resolve, reject)=>{
+			if( editor == 'text' ){
+				this.mod.codeMirror.setOption("theme", "default");
+				this.mod.codeMirror.setOption("mode", "text");
+			}else if( editor == 'markdown' ){
+				this.mod.codeMirror.setOption("theme", "mdn-like");
+				this.mod.codeMirror.setOption("mode", "markdown");
+			}else{
+				this.mod.codeMirror.setOption("theme", "monokai");
+				this.mod.codeMirror.setOption("mode", "htmlmixed");
+			}
+			resolve();
+		});
+	}
 }
