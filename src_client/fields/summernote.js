@@ -175,8 +175,8 @@ window.BroccoliFieldSummernote = function(broccoli){
 
 		// --------------------------------------
 		// コントロール
-		$ctrls.find('input[type=radio][name=editor-'+mod.name+'][value="'+data.editor+'"]').attr({'checked':'checked'});
-		const $ctrlsEditorSwitch = $ctrls.find('input[type=radio][name=editor-'+mod.name+']');
+		$ctrls.find('input[type=radio][name=editor-'+htmlspecialchars(mod.name)+'][value="'+htmlspecialchars(data.editor)+'"]').attr({'checked':'checked'});
+		const $ctrlsEditorSwitch = $ctrls.find('input[type=radio][name=editor-'+htmlspecialchars(mod.name)+']');
 		$ctrlsEditorSwitch
 			.on('change', async function(){
 				var $this = $(this);
@@ -253,7 +253,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 
 		var $ctrls = $dom.find('.broccoli-field-summernote__ctrls');
 
-		rtn.editor = $ctrls.find('input[type=radio][name=editor-'+mod.name+']:checked').val();
+		rtn.editor = $ctrls.find('input[type=radio][name=editor-'+htmlspecialchars(mod.name)+']:checked').val();
 
 		if( !rtn.editor || rtn.editor == 'html' ){
 			rtn.src = await htmlEditor.getValue();
