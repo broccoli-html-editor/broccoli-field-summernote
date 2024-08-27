@@ -5,6 +5,7 @@ const $ = jQuery;
  * TextareaEditor
  */
 module.exports = class {
+	__dirname;
 	mod;
 	$container;
 	rows;
@@ -12,6 +13,7 @@ module.exports = class {
     #$formElm;
 
 	constructor(conditions){
+		this.__dirname = conditions.__dirname;
 		this.mod = conditions.mod;
 		this.$container = conditions.$container;
 		this.rows = conditions.rows;

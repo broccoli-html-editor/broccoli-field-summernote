@@ -1,4 +1,18 @@
+(()=>{
+var __dirname = (function() {
+	if (document.currentScript) {
+		return document.currentScript.src;
+	} else {
+		var scripts = document.getElementsByTagName('script'),
+			script = scripts[scripts.length-1];
+		if (script.src) {
+			return script.src;
+		}
+	}
+})().replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '');
+
 window.BroccoliFieldSummernote = function(broccoli){
+
 	var jQuery = require('jquery');
 	var $ = jQuery;
 	var isGlobalJQuery = ( window.jQuery ? true : false );
@@ -154,12 +168,14 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var $ctrls = $div.find('.broccoli-field-summernote__ctrls');
 
 		htmlEditor = generateTextEditor({
+			__dirname: __dirname,
 			target: 'html',
 			mod: mod,
 			$container: $htmlEditor,
 			rows: rows,
 		});
 		textEditor = generateTextEditor({
+			__dirname: __dirname,
 			target: 'other',
 			mod: mod,
 			$container: $noHtmlTypeEditor,
@@ -271,3 +287,4 @@ window.BroccoliFieldSummernote = function(broccoli){
 	}
 
 }
+})();
