@@ -54,6 +54,7 @@ $path_to_vendor = 'path/to/vendor/';
 
 - HTMLモードで編集したコンテンツの文法を修復するようになった。
 - エディタの名前空間を分離するようになった。
+- 内部コードの構成を変更、その他、細かいUIの改善。
 
 ### broccoli-field-summernote v0.3.2 (2023年11月13日)
 
