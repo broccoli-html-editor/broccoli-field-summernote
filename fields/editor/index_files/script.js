@@ -1,5 +1,4 @@
 window.initialize = async (options)=>{
-console.log('=-=-=-= options:', options);
 	return new Promise((resolve, reject)=>{
 		window.$formElm = $('.broccoli-field-summernote');
 
@@ -66,13 +65,15 @@ console.log('=-=-=-= options:', options);
 		resolve();
 	});
 };
-window.setValue = async (newValue)=>{
+window.setValue = async (newVal)=>{
 	return new Promise((resolve, reject)=>{
+		window.$formElm.summernote('code', newVal);
 		resolve();
 	});
 };
 window.getValue = async ()=>{
 	return new Promise((resolve, reject)=>{
-		resolve('value');
+		const returnVal = window.$formElm.summernote('code');
+		resolve(returnVal);
 	});
 };

@@ -10,9 +10,6 @@
         "frontend": {
             "dir": "fields/",
             "file": [
-                "summernote/summernote-lite-fonts.css",
-                "summernote/summernote-lite.css",
-                "summernote/summernote-lite.js",
                 "summernote.css",
                 "summernote.js"
             ],

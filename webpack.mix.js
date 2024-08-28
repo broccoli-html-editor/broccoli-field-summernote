@@ -36,8 +36,8 @@ mix
 	.js('src_client/fields/summernote.js', 'fields/')
 	.sass('src_client/fields/summernote.scss', 'fields/')
 
-	.sass('src_client/fields/bootstrap4/css/bootstrap.scss', 'fields/bootstrap4/css/bootstrap.css')
-	.sass('src_client/fields/summernote/summernote-lite.scss', 'fields/summernote/summernote-lite.css')
+	// .sass('src_client/fields/bootstrap4/css/bootstrap.scss', 'fields/bootstrap4/css/bootstrap.css')
+	// .sass('src_client/fields/summernote/summernote-lite.scss', 'fields/summernote/summernote-lite.css')
 
 	// --------------------------------------
 	// libs

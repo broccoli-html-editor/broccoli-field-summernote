@@ -7,7 +7,7 @@ const TextareaEditor = require('./TextareaEditor.js');
  */
 module.exports = class extends TextareaEditor {
 
-    #$formElm;
+    #summernoteFrameWindow;
 
     constructor(...args) {
         super(...args);
@@ -21,7 +21,7 @@ module.exports = class extends TextareaEditor {
 				'</div>'
 			);
 
-            const $iframe = window.jQuery(this.$container.get(0)).find('.broccoli-field-summernote__summernote iframe').eq(0);
+            const $iframe = $(this.$container.get(0)).find('.broccoli-field-summernote__summernote iframe').eq(0);
             const iframeElement = $iframe.get(0);
             iframeElement.contentWindow.addEventListener('load', async ()=>{
                 await iframeElement.contentWindow.initialize({
@@ -36,7 +36,7 @@ module.exports = class extends TextareaEditor {
                         document.dispatchEvent(keyboardEvent);
                     },
                 });
-                this.#$formElm = iframeElement.contentWindow.$formElm;
+                this.#summernoteFrameWindow = iframeElement.contentWindow;
 
                 resolve();
             });
@@ -44,17 +44,11 @@ module.exports = class extends TextareaEditor {
 	}
 
 	async setValue(newVal) {
-		return new Promise((resolve, reject)=>{
-			this.#$formElm.summernote('code', newVal);
-			resolve();
-		});
+		return this.#summernoteFrameWindow.setValue(newVal);
 	}
 
 	async getValue() {
-		return new Promise((resolve, reject)=>{
-			const returnVal = this.#$formElm.summernote('code');
-			resolve(returnVal);
-		});
+		return this.#summernoteFrameWindow.getValue();
 	}
 
 }
