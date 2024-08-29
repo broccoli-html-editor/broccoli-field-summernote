@@ -17,7 +17,7 @@ module.exports = class extends TextareaEditor {
 		return new Promise((resolve, reject)=>{
 			this.$container.append(
 				'<div class="broccoli-field-summernote__summernote">'+
-                    `<iframe src="${this.__dirname}/editor/index.html"></iframe>`+
+                    `<iframe src="${this.__dirname}/editor/index.pass.html"></iframe>`+
 				'</div>'
 			);
 
