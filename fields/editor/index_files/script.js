@@ -42,10 +42,11 @@ window.initialize = async (options)=>{
 				]],
 			],
 			callbacks: {
-				onInit: function(){ setTimeout(justifyEditorHeight, 1000); },
-				// onChange: function(){ setTimeout(justifyEditorHeight, 1000); },
-				onFocus: function(){ setTimeout(justifyEditorHeight, 1000); },
-				onBlur: function(){ setTimeout(justifyEditorHeight, 1000); },
+				onInit: justifyEditorHeight,
+				onChange: justifyEditorHeight,
+				onFocus: justifyEditorHeight,
+				onBlur: justifyEditorHeight,
+				onResize: justifyEditorHeight,
 			},
 		});
 
@@ -56,11 +57,14 @@ window.initialize = async (options)=>{
 					origEvent.preventDefault();
 					options.onkeydown(origEvent);
 				}
-			})
-			// .on('load', function(event){
-			// 	setTimeout(justifyEditorHeight, 200);
-			// })
-			;
+			});
+
+		const observer = new MutationObserver(justifyEditorHeight);
+		observer.observe($('.note-editable').get(0), {
+			attributes: true,
+		});
+		// $('.note-editable')
+		// 	.on('mousedown mousemove mouseup', justifyEditorHeight);
 
 		resolve();
 	});
