@@ -28,21 +28,11 @@ module.exports = class extends TextareaEditor {
 			;
 			this.$container.append( this.#$formElm );
 
-// TODO: ダミー
-const data = {
-	editor: 'markdown',
-};
 			this.mod.codeMirror = CodeMirror.fromTextArea(
 				this.#$formElm.get(0),
 				{
 					lineNumbers: true,
-					mode: (function(ext){
-						switch(ext){
-							case 'text': return 'text'; break;
-							case 'markdown': return 'markdown'; break;
-						}
-						return 'htmlmixed';
-					})(data.editor),
+					mode: 'htmlmixed',
 					tabSize: 4,
 					indentUnit: 4,
 					indentWithTabs: true,
@@ -60,13 +50,7 @@ const data = {
 						},
 					},
 
-					theme: (function(ext){
-						switch(ext){
-							case 'text': return 'default';break;
-							case 'markdown': return 'mdn-like';break;
-						}
-						return 'monokai';
-					})(data.editor),
+					theme: 'monokai',
 				}
 			);
 			this.mod.codeMirror.on('blur', ()=>{

@@ -36,17 +36,6 @@ module.exports = class extends TextareaEditor {
 			this.mod.aceEditor.setTheme("ace/theme/github");
 			this.mod.aceEditor.getSession().setMode("ace/mode/html");
 
-			if( data.editor == 'text' ){
-				this.mod.aceEditor.setTheme("ace/theme/katzenmilch");
-				this.mod.aceEditor.getSession().setMode("ace/mode/plain_text");
-			}else if( data.editor == 'markdown' ){
-				this.mod.aceEditor.setTheme("ace/theme/github");
-				this.mod.aceEditor.getSession().setMode("ace/mode/markdown");
-			}else{
-				this.mod.aceEditor.setTheme("ace/theme/monokai");
-				this.mod.aceEditor.getSession().setMode("ace/mode/html");
-			}
-
 			resolve();
 		});
 	}

@@ -3,7 +3,10 @@ window.initialize = async (options)=>{
 		window.$formElm = $('.broccoli-field-summernote');
 
 		function justifyEditorHeight(){
-			options.setHeight($('.note-editor').outerHeight());
+			const height = $('.note-editor').outerHeight();
+			if( height > 0 ){
+				options.setHeight(height);
+			}
 		}
 
 		window.$formElm.summernote({
@@ -63,8 +66,6 @@ window.initialize = async (options)=>{
 		observer.observe($('.note-editable').get(0), {
 			attributes: true,
 		});
-		// $('.note-editable')
-		// 	.on('mousedown mousemove mouseup', justifyEditorHeight);
 
 		resolve();
 	});
