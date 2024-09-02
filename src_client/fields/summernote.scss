@@ -34,4 +34,22 @@
 			min-height: 20px;
 		}
 	}
+
+	&__ctrls {
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin: 0;
+			padding: 0;
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				label {
+					display: block;
+				}
+			}
+		}
+	}
 }

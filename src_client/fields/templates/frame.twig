@@ -4,10 +4,10 @@
     <div class="broccoli-field-summernote__other">
     </div>
     <div class="broccoli-field-summernote__ctrls">
-        <p>
-            <span style="margin-right: 10px;"><label><input type="radio" name="editor-{{ mod.name | e }}" value="" /> HTML</label></span>
-            <span style="margin-right: 10px;"><label><input type="radio" name="editor-{{ mod.name | e }}" value="text" /> {{ broccoli.lb.get('ui_label.plain_text') | e }}</label></span>
-            <span style="margin-right: 10px;"><label><input type="radio" name="editor-{{ mod.name | e }}" value="markdown" /> Markdown</label></span>
-        </p>
+        <ul>
+            <li><label><input type="radio" name="editor-{{ mod.name | e }}" value="" /> HTML</label></li>
+            <li><label><input type="radio" name="editor-{{ mod.name | e }}" value="text" /> {{ broccoli.lb.get('ui_label.plain_text') | e }}</label></li>
+            <li><label><input type="radio" name="editor-{{ mod.name | e }}" value="markdown" /> Markdown</label></li>
+        </ul>
     </div>
 </div>
