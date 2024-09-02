@@ -59,6 +59,12 @@ window.initialize = async (options)=>{
 				if( (origEvent.metaKey || origEvent.ctrlKey) && origEvent.key == 's' ){
 					origEvent.preventDefault();
 					options.onkeydown(origEvent);
+					return;
+				}
+				if( origEvent.key.toLowerCase() == 'escape' ){
+					origEvent.preventDefault();
+					options.onkeydown(origEvent);
+					return;
 				}
 			});
 
