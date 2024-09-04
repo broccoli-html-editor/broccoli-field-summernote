@@ -16,7 +16,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 	var jQuery = require('jquery');
 	var utils79 = require('utils79');
 	var $ = jQuery;
-	var isGlobalJQuery = ( window.jQuery ? true : false );
 	var editorLib = null;
 	try {
 		if(window.CodeMirror){
@@ -72,11 +71,7 @@ window.BroccoliFieldSummernote = function(broccoli){
 			}
 
 			if( conditions.target == 'html' ){
-				if( isGlobalJQuery ){
-					return new SummernoteEditor(conditions);
-				}else{
-					console.error('broccoli-field-summernoteフィールドで Summernote (WYSIWYG)を利用するには、グローバルスコープに jQuery がロードされている必要があります。');
-				}
+				return new SummernoteEditor(conditions);
 			}else{
 				if( editorLib == 'codemirror' ){
 					return new CodemirrorEditor(conditions);

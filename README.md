@@ -5,7 +5,7 @@
 
 ## インストール - Installation
 
-```
+```bash
 $ composer require broccoli-html-editor/broccoli-field-summernote;
 ```
 
@@ -31,11 +31,7 @@ $path_to_vendor = 'path/to/vendor/';
         'dir' => $path_to_vendor.'broccoli-html-editor/broccoli-field-summernote/fields/',
         'file' => array(
             'summernote.css',
-            'summernote.js',
-            "summernote/summernote-bs4.min.css",
-            "summernote/summernote-bs4.min.js",
-            "bootstrap4/css/bootstrap.min.css",
-            "bootstrap4/js/bootstrap.min.js"
+            'summernote.js'
         ),
         'function' => 'window.BroccoliFieldSummernote'
     ),
@@ -43,9 +39,6 @@ $path_to_vendor = 'path/to/vendor/';
 ```
 
 `broccoli-field-summernote` フィールドは、`multitext` フィールドのHTML編集モードと同じ形式のデータを保存します。
-
-既存のインスタンスが Markdown モード または テキストモード の場合、 HTMLに変換して扱われます。保存後の形式はHTMLモードに変換されます。
-
 
 
 ## 更新履歴 - Change log
