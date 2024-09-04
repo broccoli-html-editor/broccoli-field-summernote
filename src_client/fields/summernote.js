@@ -115,7 +115,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var rtn = '';
 		new Promise(function(rlv){rlv();})
 			.then(function(){ return new Promise(function(rlv, rjt){
-
 				// サーバーサイドの bind() に相当する処理
 				try {
 					if( typeof(fieldData)===typeof({}) && fieldData.src ){
@@ -125,6 +124,32 @@ window.BroccoliFieldSummernote = function(broccoli){
 					}
 				} catch (e) {
 					rtn = '[error]';
+				}
+				rlv();
+
+			}); })
+			.then(function(){ return new Promise(function(rlv, rjt){
+				// サーバーサイドの bind() に相当する処理
+				try {
+					if( typeof(fieldData)===typeof({}) && fieldData.editor == 'text' ){
+						rtn = utils79.h(rtn);
+					}else if( typeof(fieldData)===typeof({}) && fieldData.editor == 'markdown' ){
+						var marked = require('marked');
+						marked.setOptions({
+							renderer: new marked.Renderer(),
+							gfm: true,
+							headerIds: false,
+							tables: true,
+							breaks: false,
+							pedantic: false,
+							sanitize: false,
+							smartLists: true,
+							smartypants: false,
+							xhtml: true
+						});
+						rtn = marked.parse(rtn);
+					}
+				} catch (e) {
 				}
 				rlv();
 
