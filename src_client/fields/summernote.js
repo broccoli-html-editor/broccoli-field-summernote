@@ -14,6 +14,7 @@ var __dirname = (function() {
 window.BroccoliFieldSummernote = function(broccoli){
 
 	var jQuery = require('jquery');
+	var utils79 = require('utils79');
 	var $ = jQuery;
 	var isGlobalJQuery = ( window.jQuery ? true : false );
 	var editorLib = null;
@@ -119,9 +120,32 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var rtn = '';
 		new Promise(function(rlv){rlv();})
 			.then(function(){ return new Promise(function(rlv, rjt){
-				if( fieldData && typeof(fieldData.src) == typeof('') ){
-					rtn += fieldData.src;
+
+				// サーバーサイドの bind() に相当する処理
+				try {
+					if( typeof(fieldData)===typeof({}) && fieldData.src ){
+						rtn = utils79.toStr(fieldData.src);
+					}else{
+						rtn = utils79.toStr(fieldData);
+					}
+				} catch (e) {
+					rtn = '[error]';
 				}
+				rlv();
+
+			}); })
+			.then(function(){ return new Promise(function(rlv, rjt){
+
+				var $rtn = $('<div>').append(rtn);
+				$rtn.find('*').each(function(){
+					$(this)
+						.removeAttr('style') //スタイル削除しちゃう
+					;
+				});
+				$rtn.find('style').remove(); // styleタグも削除しちゃう
+				$rtn.find('script').remove(); // scriptタグも削除しちゃう
+				rtn = $rtn.html();
+
 				rlv();
 
 			}); })

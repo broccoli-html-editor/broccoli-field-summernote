@@ -59,7 +59,7 @@
                         "modId": "proj:wysiwyg/summernote",
                         "fields": {
                             "main": {
-                                "src": "<p class=\"cont-red\">WYSIWYGでコードを編集することはできますか？<br></p>\n<script>console.log('Contents SCRIPT');</script>\n<style>\n  p.cont-red {color: #f00;}\n  label {color: #f00 !important;}\n</style>\n",
+                                "src": "<p class=\"cont-red\">WYSIWYGでコードを編集することはできますか？<br></p>\n<script>\nconsole.log('Contents SCRIPT');\nalert('Contents SCRIPT');\n</script>\n<style>\n  p.cont-red {color: #f00;}\n  label {color: #f00 !important;}\n</style>\n",
                                 "editor": ""
                             }
                         },
@@ -107,6 +107,14 @@
                         }
                     }
                 ]
+            },
+            "anchor": "",
+            "dec": "",
+            "locked": {
+                "contents": false,
+                "children": false,
+                "move": false,
+                "delete": false
             }
         }
     }

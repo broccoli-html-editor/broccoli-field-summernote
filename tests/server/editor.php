@@ -46,9 +46,6 @@ require_once ('../../vendor/autoload.php');
 <link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.css" />
 
 <!-- broccoli - custom fields -->
-<link rel="stylesheet" href="../../fields/summernote/summernote-lite-fonts.css" />
-<link rel="stylesheet" href="../../fields/summernote/summernote-lite.css" />
-<script src="../../fields/summernote/summernote-lite.js"></script>
 <link rel="stylesheet" href="../../fields/summernote.css" />
 <script src="../../fields/summernote.js"></script>
 
@@ -137,7 +134,7 @@ broccoli.init(
 		$(window).on('resize', function(){
 			// このメソッドは、canvasの再描画を行います。
 			// ウィンドウサイズが変更された際に、UIを再描画するよう命令しています。
-			broccoli.redraw();
+			broccoli.adjust();
 		});
 
 	}
