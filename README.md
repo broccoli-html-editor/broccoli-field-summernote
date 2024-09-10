@@ -43,7 +43,7 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
-### broccoli-field-summernote v0.4.0 (リリース日未定)
+### broccoli-field-summernote v0.4.0 (2024年9月10日)
 
 - HTMLモードで編集したコンテンツの文法を修復するようになった。
 - エディタの名前空間を分離するようになった。
