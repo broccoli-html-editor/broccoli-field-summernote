@@ -43,6 +43,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.4.1 (リリース日未定)
+
+- リソースの読み込みに関する不具合を修正した。
+
 ### broccoli-field-summernote v0.4.0 (2024年9月10日)
 
 - HTMLモードで編集したコンテンツの文法を修復するようになった。

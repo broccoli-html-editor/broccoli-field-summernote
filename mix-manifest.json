@@ -6,6 +6,8 @@
     "/tests/server/editor_files/libs/px2style/dist/px2style.js": "/tests/server/editor_files/libs/px2style/dist/px2style.js",
     "/tests/server/editor_files/libs/px2style/dist/px2style.js.LICENSE.txt": "/tests/server/editor_files/libs/px2style/dist/px2style.js.LICENSE.txt",
     "/tests/server/editor_files/libs/px2style/dist/px2style.js.map": "/tests/server/editor_files/libs/px2style/dist/px2style.js.map",
+    "/tests/server/editor_files/libs/px2style/dist/themes/auto.css": "/tests/server/editor_files/libs/px2style/dist/themes/auto.css",
+    "/tests/server/editor_files/libs/px2style/dist/themes/auto.css.map": "/tests/server/editor_files/libs/px2style/dist/themes/auto.css.map",
     "/tests/server/editor_files/libs/px2style/dist/themes/darkmode.css": "/tests/server/editor_files/libs/px2style/dist/themes/darkmode.css",
     "/tests/server/editor_files/libs/px2style/dist/themes/darkmode.css.map": "/tests/server/editor_files/libs/px2style/dist/themes/darkmode.css.map",
     "/tests/server/editor_files/libs/px2style/dist/themes/default.css": "/tests/server/editor_files/libs/px2style/dist/themes/default.css",

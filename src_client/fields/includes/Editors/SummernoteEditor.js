@@ -47,9 +47,8 @@ module.exports = class extends TextareaEditor {
 		<meta charset="utf-8" />
 		<base href="${this.__dirname}/editor/index.html" />
 		<title>Editor</title>
-		<link rel="stylesheet" href="./index_files/bootstrap4/bootstrap.css" />
+		<link rel="stylesheet" href="./index_files/bootstrap4/css/bootstrap.css" />
 		<link rel="stylesheet" href="./index_files/summernote/summernote-lite.css" />
-		<link rel="stylesheet" href="./index_files/summernote/summernote-lite-fonts.css" />
 
 		<link rel="stylesheet" href="./index_files/styles.css" />
 
