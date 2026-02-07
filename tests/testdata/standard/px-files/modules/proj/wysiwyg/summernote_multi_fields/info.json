@@ -1,0 +1,15 @@
+{
+    "name": "Summernote: Multi Fields",
+    "interface": {
+        "fields": {
+            "main": {
+                "type": "broccoli-field-summernote",
+                "label": "Summernote 1"
+            },
+            "main2": {
+                "type": "broccoli-field-summernote",
+                "label": "Summernote 2"
+            }
+        }
+    }
+}

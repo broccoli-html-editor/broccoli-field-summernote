@@ -36,6 +36,7 @@ require_once ('../../vendor/autoload.php');
 <!-- px2style -->
 <script src="./editor_files/libs/px2style/dist/px2style.js"></script>
 <link rel="stylesheet" href="./editor_files/libs/px2style/dist/px2style.css" />
+<link rel="stylesheet" href="./editor_files/libs/px2style/dist/themes/auto.css" />
 
 <!-- local -->
 <link rel="stylesheet" href="./editor_files/styles.css" />
@@ -43,7 +44,6 @@ require_once ('../../vendor/autoload.php');
 
 <!-- broccoli -->
 <script src="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.js"></script>
-<link rel="stylesheet" href="../../vendor/broccoli-html-editor/broccoli-html-editor/client/dist/broccoli.css" />
 
 <!-- broccoli - custom fields -->
 <link rel="stylesheet" href="../../fields/summernote.css" />
@@ -85,6 +85,7 @@ broccoli.init(
 		'elmInstanceTreeView': document.getElementById('instanceTreeView'),
 		'elmInstancePathView': document.getElementById('instancePathView'),
 		'lang': 'ja', // language
+		'appearance': 'auto',
 		'contents_area_selector': '[data-contents]',
 			// ↑編集可能領域を探すためのクエリを設定します。
 			// 　この例では、data-contents属性が付いている要素が編集可能領域として認識されます。

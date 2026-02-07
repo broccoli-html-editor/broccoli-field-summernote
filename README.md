@@ -43,6 +43,10 @@ $path_to_vendor = 'path/to/vendor/';
 
 ## 更新履歴 - Change log
 
+### broccoli-field-summernote v0.4.2 (リリース日未定)
+
+- 1つのモジュールに複数の summernote フィールドが含まれている場合に、編集内容が混同される不具合を修正した。
+
 ### broccoli-field-summernote v0.4.1 (2024年11月1日)
 
 - リソースの読み込みに関する不具合を修正した。

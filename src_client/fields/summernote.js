@@ -27,10 +27,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 	} catch (e) {
 	}
 
-	var htmlEditor;
-	var textEditor;
-
-	var lastEditorType = '';
 	var templates = {
 		"frame": require('./templates/frame.twig'),
 	};
@@ -198,7 +194,6 @@ window.BroccoliFieldSummernote = function(broccoli){
 		if(typeof(data.editor) != typeof('')){
 			data.editor = '';
 		}
-		lastEditorType = data.editor;
 
 		var $div = $(templates.frame({
 			broccoli: broccoli,
@@ -211,20 +206,25 @@ window.BroccoliFieldSummernote = function(broccoli){
 		var $noHtmlTypeEditor = $div.find('.broccoli-field-summernote__other'); // 複数行のテキスト、Markdownのとき
 		var $ctrls = $div.find('.broccoli-field-summernote__ctrls');
 
-		htmlEditor = generateTextEditor({
+		var htmlEditor = generateTextEditor({
 			__dirname: __dirname,
 			target: 'html',
 			mod: mod,
 			$container: $htmlEditor,
 			rows: rows,
 		});
-		textEditor = generateTextEditor({
+		var textEditor = generateTextEditor({
 			__dirname: __dirname,
 			target: 'other',
 			mod: mod,
 			$container: $noHtmlTypeEditor,
 			rows: rows,
 		});
+
+		// エディタインスタンスとlastEditorTypeを$divに保存
+		$div.data('htmlEditor', htmlEditor);
+		$div.data('textEditor', textEditor);
+		$div.data('lastEditorType', data.editor);
 
 		await htmlEditor.initialize($htmlEditor)
 			.then(()=>htmlEditor.setValue(data.src))
@@ -242,17 +242,28 @@ window.BroccoliFieldSummernote = function(broccoli){
 				var $this = $(this);
 				var newEditorType = $this.val();
 
+				// DOM要素からエディタインスタンスを取得
+				var _htmlEditor = $div.data('htmlEditor');
+				var _textEditor = $div.data('textEditor');
+				var lastEditorType = $div.data('lastEditorType');
+
+				// エディタインスタンスが存在しない場合のエラーチェック
+				if( !_htmlEditor || !_textEditor ){
+					console.error('Editor instance not found (change event)');
+					return;
+				}
+
 				// --------------------------------------
 				// editor 変更前の値を取得する
-				var currentValue = await htmlEditor.getValue();
+				var currentValue = await _htmlEditor.getValue();
 				if( lastEditorType ){
-					currentValue = await textEditor.getValue();
+					currentValue = await _textEditor.getValue();
 				}
 
 				// --------------------------------------
 				// すべての入力欄の値を同期する
-				await htmlEditor.setValue(currentValue);
-				await textEditor.setValue(currentValue);
+				await _htmlEditor.setValue(currentValue);
+				await _textEditor.setValue(currentValue);
 
 				if( !newEditorType || newEditorType == 'html' ){
 					$htmlEditor.show();
@@ -262,10 +273,11 @@ window.BroccoliFieldSummernote = function(broccoli){
 					$noHtmlTypeEditor.show();
 
 				}
-				await htmlEditor.setEditorType(newEditorType);
-				await textEditor.setEditorType(newEditorType);
+				await _htmlEditor.setEditorType(newEditorType);
+				await _textEditor.setEditorType(newEditorType);
 
-				lastEditorType = newEditorType;
+				// lastEditorTypeを更新
+				$div.data('lastEditorType', newEditorType);
 			});
 
 		if( !data.editor || data.editor == 'html' ){
@@ -311,9 +323,26 @@ window.BroccoliFieldSummernote = function(broccoli){
 		rtn.src = '';
 		rtn.editor = '';
 
-		var $ctrls = $dom.find('.broccoli-field-summernote__ctrls');
+		// $divを見つける（.broccoli-field-summernoteクラスを持つ要素）
+		var $div = $dom.find('.broccoli-field-summernote').first();
+		if( $div.length === 0 ){
+			// elmそのものが.broccoli-field-summernoteの場合
+			$div = $dom.filter('.broccoli-field-summernote').first();
+		}
+
+		var $ctrls = $div.find('.broccoli-field-summernote__ctrls');
 
 		rtn.editor = $ctrls.find('input[type=radio][name=editor-'+htmlspecialchars(mod.name)+']:checked').val();
+
+		// DOM要素からエディタインスタンスを取得
+		var htmlEditor = $div.data('htmlEditor');
+		var textEditor = $div.data('textEditor');
+
+		// エディタインスタンスが存在しない場合のエラーチェック
+		if( !htmlEditor || !textEditor ){
+			console.error('Editor instance not found');
+			throw new Error('Editor instance not found');
+		}
 
 		if( !rtn.editor || rtn.editor == 'html' ){
 			rtn.src = await htmlEditor.getValue();

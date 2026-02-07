@@ -105,6 +105,27 @@
                             "move": false,
                             "delete": false
                         }
+                    },
+                    {
+                        "modId": "proj:wysiwyg/summernote_multi_fields",
+                        "fields": {
+                            "main": {
+                                "src": "こちらは、1つめのフィールドの情報です。",
+                                "editor": "markdown"
+                            },
+                            "main2": {
+                                "src": "<p>こちらは、2つめのフィールドの情報です。</p>",
+                                "editor": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": "",
+                        "locked": {
+                            "contents": false,
+                            "children": false,
+                            "move": false,
+                            "delete": false
+                        }
                     }
                 ]
             },
